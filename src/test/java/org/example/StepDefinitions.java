@@ -9,10 +9,7 @@ import io.cucumber.java.en.When;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions.*;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -72,15 +69,15 @@ public class StepDefinitions {
         Utils.scrollToElement(driver , mainPage.getScrollToInstructors());
     }
 
-    @When("click on Steve Smith's LinkedIn button")
+    @When("click on Steve Smith's linkedIn button")
     public void click_on_steve_smith_s_linked_in_button() {
         this.mainPage.clickOnLinkedInButton();
     }
 
     @Then("The page should take me to linkedIn site")
-    public void the_page_should_take_me_to_linked_in_site() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_page_should_take_me_to_linked_in_site(){
+        driver.findElement(By.xpath("//*[@id=\"instructors\"]/div/div/div[3]/div/div/a[3]/i")).click();
+
     }
 }
 
