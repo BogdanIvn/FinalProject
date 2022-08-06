@@ -39,11 +39,12 @@ public class WebsiteMainPage {
     @FindBy (xpath = "//*[@id=\"instructors\"]/div/div/div[3]/div/div/a[3]/i")
     private WebElement linkedInButton;
 
+
+
     public void clickOnReadMoreButton() {this.ReadMoreButton.click();}
 
 
-    public WebElement getScrollToLearnTheFundamentals() {
-        return this.ScrollToLearnTheFundamentals;
+    public WebElement getScrollToLearnTheFundamentals() {return this.ScrollToLearnTheFundamentals;
     }
 
     public void clickOnSubmitButton(){
@@ -63,6 +64,7 @@ public class WebsiteMainPage {
     public void clickOnLinkedInButton(){
         this.linkedInButton.click();
     }
+
 }
 
 

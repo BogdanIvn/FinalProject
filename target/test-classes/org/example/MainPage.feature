@@ -25,4 +25,4 @@ Feature: Main Page Website
     Given I am on the mainpage
     When I scroll to instructors area
     And click on Steve Smith's linkedIn button
-    Then The page should take me to linkedIn site
+    Then The page should take me to "linkedin" site
