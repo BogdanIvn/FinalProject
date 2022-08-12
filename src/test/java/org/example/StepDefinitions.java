@@ -4,6 +4,7 @@ import PageObjects.Enrollment;
 import PageObjects.WebsiteMainPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -81,6 +82,7 @@ public class StepDefinitions {
         Assert.assertTrue(driver.getTitle().toLowerCase().startsWith(string));
     }
 
+    //Enrollment page steps starts below
     @When("press the next button")
     public void press_the_next_button() {
         enrollment.clickOnNextButton();
@@ -90,7 +92,30 @@ public class StepDefinitions {
     public void the_header_of_the_page_will_be(String string) {
         Assert.assertTrue(driver.getPageSource().contains(string));
     }
-
+    @When("I fill the first name field with {string}")
+    public void i_fill_the_first_name_field_with(String string) {
+        enrollment.enterFirstName(string);
+    }
+    @And("last name field with {string}")
+    public void last_name_field_with(String string) {
+        enrollment.enterLastName(string);
+    }
+    @And("username field with {string}")
+    public void username_field_with(String string) {
+       enrollment.enterUsername(string);
+    }
+    @And("password field with {string}")
+    public void password_field_with(String string) {
+        enrollment.enterPassword(string);
+    }
+    @And("confirm password with {string}")
+    public void confirm_password_with(String string) {
+        enrollment.enterPassword(string);
+    }
+    @Then("the header of the next page will be {string}")
+    public void the_header_of_the_next_page_will_be(String string) {
+        Assert.assertTrue(driver.getPageSource().contains(string));
+    }
     @After
     public void closeBrowser(Scenario scenario) {
         if (scenario.isFailed()) {
@@ -98,7 +123,6 @@ public class StepDefinitions {
             scenario.attach(screenshot, "image/png", "name");
         }
         driver.quit();
-
 
     }
 }

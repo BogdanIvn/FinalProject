@@ -1,4 +1,4 @@
-Feature: Main Page Website
+Feature: MainPage
   These tests will verify the functionality of the main page
 
   Scenario: Valid Start the Enrollment button
@@ -26,3 +26,9 @@ Feature: Main Page Website
     When I scroll to instructors area
     And click on Steve Smith's linkedIn button
     Then The page should take me to "linkedin" site
+
+  Scenario : Valid return to top button
+    Given I am on the mainpage
+    When I scroll to the bottom of the page
+    And click on return to top button
+    Then the page should return to top
