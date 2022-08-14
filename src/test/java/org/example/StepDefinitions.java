@@ -81,8 +81,20 @@ public class StepDefinitions {
     public void the_page_should_take_me_to_linked_in_site(String string) {
         Assert.assertTrue(driver.getTitle().toLowerCase().startsWith(string));
     }
+    @When("I scroll to the bottom of the page")
+    public void i_scroll_to_the_bottom_of_the_page() { Utils.scrollToElement(driver , mainPage.getScrollToBottom()); }
+    @When("click on return to top button")
+    public void click_on_return_to_top_button() {
+        mainPage.clickOnReturnToTopButton();
+    }
+    @Then("the page should return to top")
+    public void the_page_should_return_to_top() { Utils.scrollToElement(driver , mainPage.getScrollToTop());
+    }
+    @And("click on Sara Smith's twitter button")
+    public void click_on_sara_smith_s_twitter_button() { this.mainPage.clickOnTwitterButton(); }
 
-    //Enrollment page steps starts below
+
+    // Enrollment page steps starts below
     @When("press the next button")
     public void press_the_next_button() {
         enrollment.clickOnNextButton();
@@ -101,9 +113,7 @@ public class StepDefinitions {
         enrollment.enterLastName(string);
     }
     @And("username field with {string}")
-    public void username_field_with(String string) {
-       enrollment.enterUsername(string);
-    }
+    public void username_field_with(String string) { enrollment.enterUsername(string); }
     @And("password field with {string}")
     public void password_field_with(String string) {
         enrollment.enterPassword(string);
@@ -116,14 +126,44 @@ public class StepDefinitions {
     public void the_header_of_the_next_page_will_be(String string) {
         Assert.assertTrue(driver.getPageSource().contains(string));
     }
-    @After
-    public void closeBrowser(Scenario scenario) {
-        if (scenario.isFailed()) {
-            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "name");
-        }
-        driver.quit();
-
+    @Given("I am on the Contact information page")
+    public void i_am_on_the_contact_information_page() {
+        driver.get("file:///C:/Users/Bogdan/Desktop/Testing-Env/routes/enrollment.html");
+        enrollment.enterFirstName("Bogdan");
+        enrollment.enterLastName("George");
+        enrollment.enterUsername("BGD");
+        enrollment.enterPassword("abc");
+        enrollment.confirmPassword("abc");
+        enrollment.clickOnNextButton();
     }
-}
+    @When("I fill the email field with {string}")
+    public void i_fill_the_email_field_with(String string) {
+        enrollment.enterEmailField(string);
+    }
+    @And("phone field with {string}")
+    public void phone_field_with(String string) {
+        enrollment.enterphoneField(string);
+    }
+    @And("country field with {string}")
+    public void country_field_with(String string) {
+        enrollment.enterCountryField(string);
+    }
+    @And("city field with {string}")
+    public void city_field_with(String string) {
+        enrollment.enterCityField(string);
+    }
+    @And("postcode field with {string}")
+    public void postcode_field_with(String string) {
+        enrollment.enterPostCodeField(string);
+    }
+    @After
+        public void closeBrowser (Scenario scenario){
+            if (scenario.isFailed()) {
+                byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                scenario.attach(screenshot, "image/png", "name");
+            }
+            driver.quit();
+
+        }
+    }
 

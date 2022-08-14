@@ -31,14 +31,22 @@ public class WebsiteMainPage {
     @FindBy (xpath = "//*[@id=\"instructors\"]/div/div/div[3]/div/div/a[3]/i")
     private WebElement linkedInButton;
 
-    @FindBy(xpath= "/html/body/footer/div/a/i")
+    @FindBy(xpath = "/html/body/footer/div/a/i")
     private WebElement returnToTopButton;
+
+    @FindBy(xpath ="/html/body/footer")
+    private WebElement scrollToBottom;
+
+    @FindBy(xpath = "/html/body/nav/div/a")
+    private WebElement scrollToTop;
+
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[4]/div/div/a[1]/i")
+    private WebElement twitterButton;
 
     public void clickOnEnrollmentButton() { this.enrollmentButton.click();}
     public void clickOnReadMoreButton() {this.ReadMoreButton.click();}
 
-    public WebElement getScrollToLearnTheFundamentals() {return this.ScrollToLearnTheFundamentals;
-    }
+    public WebElement getScrollToLearnTheFundamentals() {return this.ScrollToLearnTheFundamentals; }
     public void clickOnSubmitButton(){
         this.submitButton.click();
     }
@@ -46,15 +54,17 @@ public class WebsiteMainPage {
         this.emailBox.sendKeys(email);
         this.clickOnSubmitButton();
     }
-    public void clickOnInstructorsButton(){this.instructorsButton.click();}
-    public WebElement getScrollToInstructors() {
-        return this.scrollToInstructors;
-    }
+    public void clickOnInstructorsButton(){ this.instructorsButton.click(); }
+    public WebElement getScrollToInstructors() { return this.scrollToInstructors; }
     public void clickOnLinkedInButton(){
         this.linkedInButton.click();
     }
     public void clickOnReturnToTopButton(){ this.returnToTopButton.click(); }
+    public WebElement getScrollToBottom(){ return this.scrollToBottom; }
+    public WebElement getScrollToTop(){ return this.scrollToTop; }
+    public void clickOnTwitterButton(){ this.twitterButton.click(); }
 
-}
+    }
+
 
 
